@@ -33,8 +33,8 @@
     <div class="wrapper">
         <div class="sidebar">
             <ul>
-                <li><a href="">Dashboard</a></li>
-                <li><a href="">Borrow History</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="borrowlist.php">Borrow History</a></li>
                 <li><a href="">Search Book</a></li>
                 <li><a href="">My Shelves</a></li>
                 <li><a href="">Financial</a></li>

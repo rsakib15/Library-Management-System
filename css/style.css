@@ -251,3 +251,15 @@ body {
     font-weight: bold;
 
 }
+
+.table{
+    width: 98%;
+
+    border: 1px solid #f44;
+}
+
+th{
+    background: #000;
+    padding: 10px;
+    color: #fff;
+}
