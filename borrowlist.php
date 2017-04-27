@@ -30,27 +30,59 @@ if(empty($_SESSION["user"])){
             </nav>
         </header>
     </div>
-    <div class="wrapper">
-        <div class="sidebar">
-            <ul>
-                <li><a href="">Dashboard</a></li>
-                <li><a href="">Borrow History</a></li>
-                <li><a href="">Search Book</a></li>
-                <li><a href="">My Shelves</a></li>
-                <li><a href="">Financial</a></li>
-                <li><a href="">News and Events</a></li>
-            </ul>
-        </div>
-    </div>
-
+    <?php include_once ('includes/sidebar.php'); ?>
     <div class="main-container">
-        <table class="table">
-            <th>#</th>
-            <th>Title</th>
-            <th>Edition</th>
-            <th>Borrowed On</th>
-            <th>Expected Return On</th>
-            <th>Fine</th>
+        <h1>Current Borrow</h1>
+        <table class="table current-borrow">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Edition</th>
+                <th>Borrowed On</th>
+                <th>Expected Return On</th>
+                <th>Fine</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Let Us C</td>
+                <td>110th</td>
+                <td>10-jan-2017</td>
+                <td>20-jan-2017</td>
+                <td>0.0</td>
+            </tr><tr>
+                <td>1</td>
+                <td>Let Us C</td>
+                <td>110th</td>
+                <td>10-jan-2017</td>
+                <td>20-jan-2017</td>
+                <td>0.0</td>
+            </tr>
+        </table>
+        <h1>Borrow History</h1>
+        <table class="table borrow-history">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Edition</th>
+                <th>Borrowed On</th>
+                <th>Expected Return On</th>
+                <th>Fine</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Let Us C</td>
+                <td>110th</td>
+                <td>10-jan-2017</td>
+                <td>20-jan-2017</td>
+                <td>0.0</td>
+            </tr><tr>
+                <td>1</td>
+                <td>Let Us C</td>
+                <td>110th</td>
+                <td>10-jan-2017</td>
+                <td>20-jan-2017</td>
+                <td>0.0</td>
+            </tr>
         </table>
     </div>
 </body>

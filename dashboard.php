@@ -30,18 +30,7 @@
             </nav>
         </header>
     </div>
-    <div class="wrapper">
-        <div class="sidebar">
-            <ul>
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="borrowlist.php">Borrow History</a></li>
-                <li><a href="">Search Book</a></li>
-                <li><a href="">My Shelves</a></li>
-                <li><a href="">Financial</a></li>
-                <li><a href="">News and Events</a></li>
-            </ul>
-        </div>
-    </div>
+    <?php include_once ('includes/sidebar.php'); ?>
 
     <div class="main-container">
         <h1>Today's Transaction</h1>
