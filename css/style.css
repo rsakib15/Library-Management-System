@@ -1,0 +1,253 @@
+@font-face {
+    font-family: 'Diavlo_BOLD';
+    src: url('../fonts/Diavlo_BOLD_II_37.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/HelveticaNeue.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    line-height: 22px;
+}
+
+ul{
+    list-style-type: none;
+}
+a,a:hover,a:active,a:focus{
+    text-decoration: none;
+    color : #fff;
+}
+
+.clear{
+    clear: both;
+}
+.header-wrapper{
+    width: 100%;
+    background: #404040;
+}
+header{
+    color: #fff;
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo{
+    font-family: 'Diavlo_BOLD',sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    float: left;
+    width: 300px;
+    padding: 10px 0;
+    margin-top: 8px;
+    color: #fff;
+}
+header nav{
+    overflow:hidden;
+}
+header nav ul{
+    float: right;
+}
+header nav ul li{
+    display: inline-block;
+    padding: 20px;
+}
+header nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+header nav ul li:hover a{
+    color: #F26C4F;
+}
+
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 500px;
+    margin: 0 auto 100px;
+    padding: 30px;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 100px;
+}
+.form .thumbnail {
+    background: #EF3B3A;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 30px;
+    padding: 50px 30px;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    box-sizing: border-box;
+}
+.form .thumbnail img {
+    display: block;
+    width: 100%;
+}
+.form input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.form button {
+    outline: 0;
+    background: #EF3B3A;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+.form .message a {
+    color: #EF3B3A;
+    text-decoration: none;
+}
+
+
+.container {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+}
+.container:before, .container:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.container .info {
+    margin: 50px auto;
+    text-align: center;
+}
+.container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #1a1a1a;
+}
+.container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+}
+.container .info span a {
+    color: #000000;
+    text-decoration: none;
+}
+.container .info span .fa {
+    color: #EF3B3A;
+}
+
+
+body {
+    background: #ccc;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sidebar{
+    position: absolute;
+    background: #222222;
+    height: 100%;
+}
+
+.sidebar ul{
+    margin-top: 50px;
+}
+
+.sidebar ul li{
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar ul li a{
+    padding: 30px 50px;
+    display: block;
+}
+
+.sidebar ul li:hover{
+    background: #EF3B3A;
+}
+
+.errortxt{
+    background: #CCCCCC;
+    padding: 25px 80px;
+    width: 50%;
+    margin: 0px auto;
+    border-radius: 10px;
+    color: #fff;
+
+}
+
+.loginerror{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+.main-container{
+    margin-left: 250px;
+    margin-top: 30px;
+}
+.transaction{
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+
+
+
+
+.transaction li {
+    padding: 50px;
+    background: #f44;
+    width: 200px;
+    height: 77px;
+    margin: 10px 5px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+
+}
+
+.transaction li span{
+    font-size: 50px;
+    position: absolute;
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+
+}
