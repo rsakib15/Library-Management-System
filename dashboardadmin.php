@@ -18,64 +18,53 @@ if(empty($_SESSION["user"])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div class="header-wrapper">
-    <header>
-        <div class="logo">
-            <h1><a href="#">Library Management</a></h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="controller/logout_controller.php">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-</div>
-<?php include_once ('includes/sidebar.php'); ?>
+    <?php include_once ('includes/header.php'); ?>
+    <?php include_once ('includes/sidebaradmin.php'); ?>
 
-<div class="main-container">
-    <h1>Today's Transaction</h1>
-    <div class="transaction today">
-        <ul>
-            <li>
-                <p><a href="">Reserved Transaction</a></p>
-                <span>7</span>
-            </li>
-            <li>
-                <p><a href="">Borrowed Transaction</a></p>
-                <span>7</span>
-            </li>
-            <li>
-                <p><a href="">Returned Transaction</a></p>
-                <span>7</span>
-            </li>
-            <li>
-                <p><a href="">Violation</a></p>
-                <span>7</span>
-            </li>
-        </ul>
+    <div class="main-container">
+        <h1>Statistics</h1>
+        <div class="transaction today">
+            <ul>
+                <li>
+                    <p><a href="">Total Books</a></p>
+                    <span>7</span>
+                </li>
+                <li>
+                    <p><a href="">Total Students</a></p>
+                    <span>7</span>
+                </li>
+                <li>
+                    <p><a href="">Books Available</a></p>
+                    <span>7</span>
+                </li>
+                <li>
+                    <p><a href="">Total Publication</a></p>
+                    <span>7</span>
+                </li>
+            </ul>
+        </div>
+        <h1>All Transaction</h1>
+        <div class="transaction all">
+            <ul>
+                <li>
+                    <p><a href="">Reserved Transaction</a></p>
+                    <span>7</span>
+                </li>
+                <li>
+                    <p><a href="">Borrowed Transaction</a></p>
+                    <span>7</span>
+                </li>
+                <li>
+                    <p><a href="">Returned Transaction</a></p>
+                    <span>7</span>
+                </li>
+                <li>
+                    <p><a href="">Violation</a></p>
+                    <span>7</span>
+                </li>
+            </ul>
+        </div>
     </div>
-    <h1>All Transaction</h1>
-    <div class="transaction all">
-        <ul>
-            <li>
-                <p><a href="">Reserved Transaction</a></p>
-                <span>7</span>
-            </li>
-            <li>
-                <p><a href="">Borrowed Transaction</a></p>
-                <span>7</span>
-            </li>
-            <li>
-                <p><a href="">Returned Transaction</a></p>
-                <span>7</span>
-            </li>
-            <li>
-                <p><a href="">Violation</a></p>
-                <span>7</span>
-            </li>
-        </ul>
-    </div>
-</div>
 
 </body>
 </html>

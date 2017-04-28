@@ -7,6 +7,7 @@
         while($res = mysqli_fetch_array($result)){
             if($user==$res['user_name'] && $pass==$res['user_password']){
                 $auth=true;
+                $_SESSION['user_type']=$res['user_type'];
                 break;
             }
             else{

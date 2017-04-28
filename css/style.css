@@ -286,3 +286,14 @@ td{
     padding: 10px 50px;
     cursor: pointer;
 }
+.fform{
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 500px;
+    margin: 0;
+    padding: 30px;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 100px;
+}

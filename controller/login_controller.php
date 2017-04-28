@@ -7,6 +7,7 @@
             session_start();
             ob_start();
             $_SESSION['user']=$user;
+
             return true;
         }
         else{
