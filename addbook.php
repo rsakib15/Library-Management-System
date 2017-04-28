@@ -1,9 +1,12 @@
 <?php
-session_start();
-ob_start();
-if(empty($_SESSION["user"])){
-    header("location: index.php");
-}
+    session_start();
+    ob_start();
+    if(empty($_SESSION["user"])){
+        header("location: index.php");
+    }
+    if($_SESSION['user_type']=='student'){
+        header("location: index.php");
+    }
 ?>
 
 <!doctype html>
@@ -20,7 +23,7 @@ if(empty($_SESSION["user"])){
 <body>
 
     <?php include_once ('includes/header.php'); ?>
-    <?php include_once ('includes/sidebaradmin.php'); ?>
+    <?php include_once ('includes/sidebar.php'); ?>
 
     <div class="main-container">
         <div class="form login-form">

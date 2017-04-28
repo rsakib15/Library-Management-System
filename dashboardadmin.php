@@ -19,7 +19,7 @@ if(empty($_SESSION["user"])){
 </head>
 <body>
     <?php include_once ('includes/header.php'); ?>
-    <?php include_once ('includes/sidebaradmin.php'); ?>
+    <?php include_once ('includes/sidebar.php'); ?>
 
     <div class="main-container">
         <h1>Statistics</h1>

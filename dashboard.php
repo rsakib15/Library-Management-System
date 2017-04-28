@@ -18,18 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="header-wrapper">
-        <header>
-            <div class="logo">
-                <h1><a href="#">Library Management</a></h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="controller/logout_controller.php">Logout</a></li>
-                </ul>
-            </nav>
-        </header>
-    </div>
+    <?php include_once ('includes/header.php'); ?>
     <?php include_once ('includes/sidebar.php'); ?>
 
     <div class="main-container">

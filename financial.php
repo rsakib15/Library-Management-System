@@ -4,6 +4,9 @@ ob_start();
 if(empty($_SESSION["user"])){
     header("location: index.php");
 }
+if($_SESSION['user_type']=='admin'){
+    header("location: index.php");
+}
 ?>
 
 <!doctype html>
