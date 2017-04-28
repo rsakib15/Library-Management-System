@@ -22,7 +22,8 @@
         mysqli_query(getConnectionName(),"INSERT INTO lms_user (user_name,user_fname,user_lname,user_email,user_phone,user_password) VALUES ('".$u."', '".$fn."', '".$ln."','".$email."','".$phone."','".$p1."')");
     }
 
-    function updateuser($u,$fn,$ln,$email,$phone,$p1){
+    function updateuserid(){
+
 
     }
 
@@ -30,8 +31,11 @@
 
     }
 
-    function getUserid(){
-
+    function getUserid($username){
+        $result = mysqli_query(getConnectionName(),"SELECT * FROM lms_user where user_name =  '". $username ."'");
+        if($res = mysqli_fetch_array($result)){
+            return $res['user_id'];
+        }
     }
 
 

@@ -27,7 +27,20 @@ ob_start();
 
     <div class="main-container">
         <h1>ISSUE BOOK</h1>
+
         <div class="form login-form">
+            <?php
+            if ( isset($_GET['success']) && $_GET['success'] == 1 ){
+                echo '<div class="loginerror" id="dummy">
+                     <p class="errortxt">Successfully Issued</p>
+                  </div>';
+            }
+            else if ( isset($_GET['failed']) && $_GET['failed'] == 1){
+                echo '<div class="loginerror" id="dummy">
+                     <p class="errortxt">Error to Make an Issue</p>
+                  </div>';
+            }
+            ?>
             <form class="login-form" method="post" action="controller/book_controller.php">
                 <label for="username" text-align="left">Username</label>
                 <input type="text" placeholder="Insert Username" id="username" name="username" onchange="showUser(this.value)"/>
