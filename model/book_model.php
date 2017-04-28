@@ -7,14 +7,31 @@
         return true;
     }
 
+    function totalavailablebook($bookid){
+        $result=mysqli_query(getConnectionName(),"SELECT * FROM lms_books where book_id = '" . $bookid ."'");
+        if($res=mysqli_fetch_array($result)){
+            return $res['book_available'];
+        }
+    }
 
+    function decresebook($bookid){
+        $available=totalavailablebook($bookid);
+        $available -= 1;
+        mysqli_query(getConnectionName(),"UPDATE lms_books SET book_available = '" . $available . "' WHERE book_id = '" . $bookid . "'");
+    }
+
+    function increasebook($bookid){
+        $available=totalavailablebook($bookid);
+        $available += 1;
+        mysqli_query(getConnectionName(),"UPDATE lms_books SET book_available = '" . $available . "' WHERE book_id = '" . $bookid . "'");
+        }
 
     function add_issue($username,$bookid){
         $u=getUserid($username);
         $t=time();
         $timestamp = time()+86400;
-
-        mysqli_query(getConnectionName(),"INSERT INTO lms_issue (book_id,user_id,issue_date, return_date,status)  VALUES ('".$bookid."', '".$username."','".$t."', '".$timestamp."','pending')");
+        decresebook($bookid);
+        mysqli_query(getConnectionName(),"INSERT INTO lms_issue (book_id,user_id,issue_date, return_date,status)  VALUES ('".$bookid."', '".$u."','".$t."', '".$timestamp."','pending')");
         return true;
     }
 

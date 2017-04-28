@@ -43,5 +43,5 @@
                 header( 'Location: ../issueebook.php?failed=1' );
             }
             break;
-            
+
     }
