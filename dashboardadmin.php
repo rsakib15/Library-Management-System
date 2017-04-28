@@ -38,7 +38,25 @@ if(empty($_SESSION["user"])){
                     <span>7</span>
                 </li>
                 <li>
-                    <p><a href="">Total Publication</a></p>
+                    <p><a href="">Books Borrowed</a></p>
+                    <span>7</span>
+                </li>
+            </ul>
+        </div>
+        <h1>Today's Transaction</h1>
+
+        <div class="transaction all">
+            <ul>
+                <li>
+                    <p><a href="">Borrowed Transaction</a></p>
+                    <span>7</span>
+                </li>
+                <li>
+                    <p><a href="">Returned Transaction</a></p>
+                    <span>7</span>
+                </li>
+                <li>
+                    <p><a href="">Violation</a></p>
                     <span>7</span>
                 </li>
             </ul>
@@ -46,10 +64,6 @@ if(empty($_SESSION["user"])){
         <h1>All Transaction</h1>
         <div class="transaction all">
             <ul>
-                <li>
-                    <p><a href="">Reserved Transaction</a></p>
-                    <span>7</span>
-                </li>
                 <li>
                     <p><a href="">Borrowed Transaction</a></p>
                     <span>7</span>

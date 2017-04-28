@@ -26,4 +26,11 @@
             }
             break;
 
+        case 'issue':
+            include_once "../model/book_model.php";
+
+            $username= $_POST['username'];
+            $bookid=$_POST['']
+
+
     }

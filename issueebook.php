@@ -22,36 +22,64 @@ ob_start();
 </head>
 <body>
 
-<?php include_once ('includes/header.php'); ?>
-<?php include_once ('includes/sidebar.php'); ?>
+    <?php include_once ('includes/header.php'); ?>
+    <?php include_once ('includes/sidebar.php'); ?>
 
-<div class="main-container">
-    <div class="form login-form">
-        <div id="login-form">
-            <?php
-            if ( isset($_GET['success']) && $_GET['success'] == 1 ){
-                echo '<div class="loginerror" id="dummy">
-                     <p class="errortxt">Successfully added</p>
-                  </div>';
-            }
-            else if ( isset($_GET['failed']) && $_GET['failed'] == 1){
-                echo '<div class="loginerror" id="dummy">
-                     <p class="errortxt">Error to add New Book</p>
-                  </div>';
-            }
-            ?>
-            <form class="login-form "  method="post" action="controller/book_controller.php">
-                <input type="text" placeholder="Book Name" name="bookname"/>
-                <input type="text" placeholder="Book ISBN" name="bookisbn"/>
-                <input type="text" placeholder="Book Edition" name="bookedition"/>
-                <input type="text" placeholder="Book Author" name="bookauthor"/>
-                <input type="text" placeholder="Total Copy" name="booktotal"/>
-                <input type="text" placeholder="Shelf No." name="bookshelf"/>
-                <button name="submit" value="addbook">ADD NEW BOOK</button>
+    <div class="main-container">
+        <h1>ISSUE BOOK</h1>
+        <div class="form login-form">
+            <form class="login-form" method="post" action="controller/book_controller.php">
+                <label for="username" text-align="left">Username</label>
+                <input type="text" placeholder="Insert Username" id="username" name="username" onchange="showUser(this.value)"/>
+                <div id="userinfo"></div>
             </form>
         </div>
     </div>
-</div>
+
+
+    <script>
+        function showBook(str) {
+            if (str == "") {
+                document.getElementById("bookinfo").innerHTML = "";
+                return;
+            }
+            else {
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("bookinfo").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET","bookinfo.php?q="+str,true);
+                xmlhttp.send();
+            }
+        }
+
+        function showUser(str) {
+            if (str == "") {
+                document.getElementById("bookinfo").innerHTML = "";
+                return;
+            }
+            else {
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("userinfo").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET","userinfo.php?q="+str,true);
+                xmlhttp.send();
+            }
+        }
+    </script>
 
 </body>
 </html>
