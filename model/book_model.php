@@ -37,6 +37,8 @@
 
     function return_issue($transaction){
 
+        return true;
+
     }
 
 
