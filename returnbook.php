@@ -28,9 +28,9 @@ if($_SESSION['user_type']=='student'){
 <div class="main-container">
     <h1>Return BOOK</h1>
     <div class="form login-form">
-        <form class="login-form">
+        <form class="login-form" method="post" action="controller/book_controller.php">
             <label for="bookid" text-align="left">Insert Transaction Id</label>
-            <input type="text" placeholder="Insert Transaction ID" id="bookid" name="bookid" onchange="findTransaction(this.value)"/>
+            <input type="text" placeholder="Insert Transaction ID" id="bookid" name="transaction" onchange="findTransaction(this.value)"/>
             <div id="transactioninfo"></div>
         </form>
     </div>

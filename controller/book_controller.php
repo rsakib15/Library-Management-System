@@ -44,4 +44,21 @@
             }
             break;
 
+        case 'return':
+            include_once "../model/book_model.php";
+            $t= $_POST['transaction'];
+
+            if($t!=""){
+                if(return_issue($t)) {
+                    header('Location: ../returnbook.php?success=1');
+                }
+                else{
+                    header( 'Location: ../returnbook.php?failed=1' );
+                }
+            }
+            else{
+                header( 'Location: ../returnbook.php?failed=1' );
+            }
+            break;
+
     }

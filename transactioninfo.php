@@ -1,36 +1,38 @@
 <?php
-include_once 'model/database.php';
-$q = intval($_GET['q']);
+    include_once 'model/database.php';
+    $q = intval($_GET['q']);
 
-$sql="SELECT * FROM lms_books WHERE book_id = '".$q."'";
-$result = mysqli_query(getConnectionName(),$sql);
-
-if($row = mysqli_fetch_array($result)) {
-    echo '<p>Title : ' . $row['book_name']. '</p>';
-    echo '<p>ISBN : ' . $row['book_isbn']. '</p>';
-    echo '<p>Edition : ' . $row['book_edition']. '</p>';
-    echo '<p>Author : ' . $row['book_author']. '</p>';
-    echo '<p>Total : ' . $row['book_total']. '</p>';
-    echo '<p>Available : ' . $row['book_available']. '</p>';
-    echo '<p>Shelf : ' . $row['book_self']. '</p>';
+    $sql="SELECT * FROM lms_issue WHERE issue_id = '".$q."'";
+    $result = mysqli_query(getConnectionName(),$sql);
 
 
-    if($row['book_available'] > '0'){
-        echo '<button name="issue" value="issue">ISSUE BOOK</button>';
+    if($row = mysqli_fetch_array($result)) {
+        echo '<p>Issue No : ' . $row['issue_id']. '</p>';
+        echo '<p>Issue Date : ' . date('d/m/Y',$row['issue_date']) . '</p>';
+
+        $fine = ($row['return_date']-$row['issue_date'])/86400;
+
+        if($fine>7){
+            $fine= $fine*15;
+        }
+        else{
+            $fine= 0;
+        }
+        $fine= round($fine);
+
+        echo '<p>Fine : ' . $fine. ' Taka</p>';
+        echo '<br>';
+        echo '<p>Book ID : ' . $row['book_id']. ' </p>';
+        echo '<p>Title : ' . $row['user_id']. '</p>';
+        echo '<p>Author : ' . date('d/m/Y',$row['issue_date']) . '</p>';
+        echo '<p>Edition : ' . $row['return_date']. '</p>';
+        echo '<button name="submit" value="return">Return BOOK</button>';
     }
+
     else{
         echo '<div class="loginerror" id="dummy">
-                     <p class="errortxt">Sorry, Book Not Available</p>
-            </div>';
-    }
-}
-else{
-    echo '<div class="loginerror" id="dummy">
-                     <p class="errortxt">Sorry, Book Not Found</p>
-            </div>';
-}
+                <p class="errortxt">Sorry,Transaction ID Not Found</p>
+             </div>';
 
-
-
-
+        }
 ?>
