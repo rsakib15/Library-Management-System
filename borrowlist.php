@@ -38,7 +38,7 @@
             <?php
                 include_once 'model/database.php';
                 $sql="SELECT lms_issue.issue_id,lms_issue.book_id,lms_issue.user_id,lms_issue.issue_date,lms_issue.return_date,lms_issue.status,lms_books.book_name,lms_books.book_isbn,lms_books.book_edition,lms_books.book_author,lms_user.user_name,lms_user.user_fname,lms_user.user_lname,lms_user.user_email FROM lms_issue,lms_books,lms_user WHERE lms_issue.book_id=lms_books.book_id AND lms_issue.user_id=lms_user.user_id AND lms_issue.status = 'pending' AND lms_user.user_name = '" . $_SESSION['user'] . "'";
-
+                $x=0;
                 $result = mysqli_query(getConnectionName(), $sql);
                 while ($res = mysqli_fetch_array($result)) {
                     ++$x;

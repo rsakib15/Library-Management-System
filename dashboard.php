@@ -4,6 +4,7 @@
     if(empty($_SESSION["user"])){
         header("location: index.php");
     }
+    include_once 'model/book_model.php';
 ?>
 
 <!doctype html>
@@ -21,25 +22,22 @@
     <?php include_once ('includes/header.php'); ?>
     <?php include_once ('includes/sidebar.php'); ?>
 
+
     <div class="main-container">
         <h1>Today's Transaction</h1>
         <div class="transaction today">
             <ul>
                 <li>
-                    <p><a href="">Reserved Transaction</a></p>
-                    <span>7</span>
-                </li>
-                <li>
                     <p><a href="">Borrowed Transaction</a></p>
-                    <span>7</span>
+                    <span><?php echo getCurrentBorrow($_SESSION["user"])?></span>
                 </li>
                 <li>
                     <p><a href="">Returned Transaction</a></p>
-                    <span>7</span>
+                    <span><?php echo getCurrentReturn($_SESSION["user"])?></span>
                 </li>
                 <li>
-                    <p><a href="">Violation</a></p>
-                    <span>7</span>
+                    <p><a href="">Expected Return</a></p>
+                    <span><?php echo getExpectedReturn($_SESSION["user"])?></span>
                 </li>
             </ul>
         </div>
@@ -47,20 +45,16 @@
         <div class="transaction all">
             <ul>
                 <li>
-                    <p><a href="">Reserved Transaction</a></p>
-                    <span>7</span>
-                </li>
-                <li>
                     <p><a href="">Borrowed Transaction</a></p>
-                    <span>7</span>
+                    <span><?php echo getTotalBorrow($_SESSION["user"])?></span>
                 </li>
                 <li>
                     <p><a href="">Returned Transaction</a></p>
-                    <span>7</span>
+                    <span><?php echo getTotalReturn($_SESSION["user"])?></span>
                 </li>
                 <li>
                     <p><a href="">Violation</a></p>
-                    <span>7</span>
+                    <span><?php echo getViolationUser($_SESSION["user"]) ?></span>
                 </li>
             </ul>
         </div>

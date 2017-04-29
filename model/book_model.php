@@ -28,9 +28,13 @@
 
     function add_issue($username,$bookid){
         $u=getUserid($username);
-        $t=time();
-        $timestamp = time()+86400*7;
         decresebook($bookid);
+
+        $t=time();
+        $t=date("Y-m-d", $t);
+        $timestamp = time()+86400*7;
+        $timestamp=date('Y-m-d',$timestamp);
+
         mysqli_query(getConnectionName(),"INSERT INTO lms_issue (book_id,user_id,issue_date, return_date,status)  VALUES ('".$bookid."', '".$u."','".$t."', '".$timestamp."','pending')");
         return true;
     }
@@ -73,6 +77,58 @@
         return true;
 
     }
+
+    function getCurrentBorrow($user){
+        $u=getUserid($user);
+
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE user_id='". $u . "' AND status='pending' AND issue_date = CURDATE()");
+        $res=mysqli_fetch_array($result);
+        return $res['totaltoday'];
+    }
+
+    function getTotalBorrow($user){
+        $u=getUserid($user);
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE user_id='". $u . "'");
+        $res=mysqli_fetch_array($result);
+        return $res['totaltoday'];
+    }
+
+    function getTotalReturn($user){
+        $u=getUserid($user);
+
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE user_id='". $u . "' AND status='accepted'");
+        $res=mysqli_fetch_array($result);
+        return $res['totaltoday'];
+    }
+
+    function getCurrentReturn($user){
+        $u=getUserid($user);
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totalall FROM lms_issue WHERE user_id='". $u . "' AND status='accepted' AND return_date = CURDATE()");
+        $res=mysqli_fetch_array($result);
+        return $res['totalall'];
+    }
+
+    function getExpectedReturn($user){
+        $u=getUserid($user);
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totalall FROM lms_issue WHERE user_id='". $u . "' AND status='pending' AND return_date = CURDATE()");
+        $res=mysqli_fetch_array($result);
+        return $res['totalall'];
+    }
+
+    function getViolationUser($user){
+        $u=getUserid($user);
+        $result=mysqli_query(getConnectionName(),"SELECT *  FROM lms_issue WHERE user_id='". $u . "' AND status='pending'");
+        $cnt=0;
+        while($res=mysqli_fetch_array($result)){
+            if($res['return_date']>time()){
+                $cnt++;
+            }
+        }
+        return $cnt;
+    }
+
+
+
 
 
 
