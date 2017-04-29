@@ -4,6 +4,7 @@ ob_start();
 if(empty($_SESSION["user"])){
     header("location: index.php");
 }
+include_once 'model/book_model.php';
 ?>
 
 <!doctype html>
@@ -26,20 +27,21 @@ if(empty($_SESSION["user"])){
         <div class="transaction today">
             <ul>
                 <li>
-                    <p><a href="">Total Books</a></p>
-                    <span>7</span>
+                    <p><a href="">Total Students</a></p>
+                    <span><?php echo getTotalStudent();?></span>
                 </li>
                 <li>
-                    <p><a href="">Total Students</a></p>
-                    <span>7</span>
+                    <p><a href="">Total Books</a></p>
+                    <span><?php echo getTotalBooks();?></span>
                 </li>
+
                 <li>
                     <p><a href="">Books Available</a></p>
-                    <span>7</span>
+                    <span><?php echo getAvailableBooks();?></span>
                 </li>
                 <li>
                     <p><a href="">Books Borrowed</a></p>
-                    <span>7</span>
+                    <span><?php echo getBorrowedBook();?></span>
                 </li>
             </ul>
         </div>

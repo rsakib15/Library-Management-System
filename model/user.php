@@ -38,5 +38,11 @@
         }
     }
 
+    function getTotalStudent(){
+        $res=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totalstudent FROM lms_user WHERE user_type= 'student' ");
+        $res=mysqli_fetch_array($res);
+        return $res['totalstudent'];
+    }
+
 
 

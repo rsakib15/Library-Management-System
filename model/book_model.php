@@ -45,5 +45,28 @@
         return true;
     }
 
+    function getTotalBooks(){
+        $result=mysqli_query(getConnectionName(),"SELECT * FROM lms_books");
+        $total=0;
+        while($res=mysqli_fetch_array($result)){
+            $total+=$res['book_total'];
+        }
+        return $total;
+    }
+
+    function getAvailableBooks(){
+        $result=mysqli_query(getConnectionName(),"SELECT * FROM lms_books");
+        $total=0;
+        while($res=mysqli_fetch_array($result)){
+            $total+=$res['book_available'];
+
+        }
+        return $total;
+    }
+
+    function getBorrowedBook(){
+        return getTotalBooks()-getAvailableBooks();
+    }
+
 
 
