@@ -2,13 +2,27 @@
     include_once 'model/database.php';
     $q = intval($_GET['q']);
 
-    $sql="SELECT * FROM lms_issue WHERE issue_id = '".$q."'";
+    $sql="SELECT lms_issue.issue_id,lms_issue.book_id,lms_issue.user_id,lms_issue.issue_date,lms_issue.return_date,lms_issue.status,lms_books.book_name,lms_books.book_isbn,lms_books.book_edition,lms_books.book_author,lms_user.user_name,lms_user.user_fname,lms_user.user_lname,lms_user.user_email FROM lms_issue,lms_books,lms_user WHERE lms_issue.book_id=lms_books.book_id AND lms_issue.user_id=lms_user.user_id AND lms_issue.issue_id = '" . $q . "'";
+
     $result = mysqli_query(getConnectionName(),$sql);
 
 
     if($row = mysqli_fetch_array($result)) {
-        echo '<p>Issue No : ' . $row['issue_id']. '</p>';
-        echo '<p>Issue Date : ' . date('d/m/Y',$row['issue_date']) . '</p>';
+        echo '<h3>Book Information</h3>';
+        echo '<p>Book ID : ' . $row['book_id']. ' </p>';
+        echo '<p>Title : ' . $row['book_name']. '</p>';
+        echo '<p>Author : ' . $row['book_author']. '</p>';
+        echo '<p>ISBN : ' . $row['book_isbn']. '</p>';
+        echo '<p>Edition : ' . $row['book_edition']. '</p>';
+
+
+        echo '<br>';
+        echo '<h3>User Information</h3>';
+        echo '<p>Name : ' . $row['user_name'] . '</p>';
+        echo '<p>Username : ' . $row['user_fname'] . $row['user_lname'] . '</p>';
+        echo '<p>Name : ' . $row['user_email'] . '</p>';
+
+        echo '<br>';
 
         $fine = ($row['return_date']-$row['issue_date'])/86400;
 
@@ -20,12 +34,9 @@
         }
         $fine= round($fine);
 
-        echo '<p>Fine : ' . $fine. ' Taka</p>';
         echo '<br>';
-        echo '<p>Book ID : ' . $row['book_id']. ' </p>';
-        echo '<p>Title : ' . $row['user_id']. '</p>';
-        echo '<p>Author : ' . date('d/m/Y',$row['issue_date']) . '</p>';
-        echo '<p>Edition : ' . $row['return_date']. '</p>';
+
+        echo '<h1 style="text-align: center; padding : 30px 0px"><b>Fine : ' . $fine. ' Taka</b></h1>';
         echo '<button name="submit" value="return">Return BOOK</button>';
     }
 
