@@ -61,4 +61,31 @@
             }
             break;
 
+        case 'update':
+            include_once "../model/book_model.php";
+            $bookid=$_POST['bookid'];
+            $bookname= $_POST['bookname'];
+            $bookisbn=$_POST['bookisbn'];
+            $bookedition=$_POST['bookedition'];
+            $bookauthor=$_POST['bookauthor'];
+            $booktotal=$_POST['booktotal'];
+            $bookshelf=$_POST['bookshelf'];
+
+            if($bookid!="" && $bookname!="" && $bookisbn!="" && $bookedition!="" && $bookauthor!="" && $booktotal!="" && $bookshelf!=""){
+                if(updatebook($bookid,$bookname,$bookisbn,$bookedition,$bookauthor,$booktotal)) {
+                    header('Location: ../updatebook.php?success=1');
+                }
+                else{
+                    header( 'Location: ../updatebook.php?failed=1' );
+                }
+            }
+            else{
+                header( 'Location: ../updatebook.php?failed=1' );
+            }
+            break;
+
+        default:
+            echo "Error";
+
+
     }

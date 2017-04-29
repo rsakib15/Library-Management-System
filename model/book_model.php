@@ -68,5 +68,11 @@
         return getTotalBooks()-getAvailableBooks();
     }
 
+    function updatebook($bookid,$bookname,$bookisbn,$bookedition,$bookauthor,$booktotal){
+        mysqli_query(getConnectionName(),"UPDATE lms_books SET book_name = '" . $bookname . "',book_isbn= '" . $bookisbn ."' ,book_edition = '". $bookedition . "' ,book_author = '" .$bookauthor . "',book_total = '".$booktotal ."' where book_id = '". $bookid . "'");
+        return true;
+
+    }
+
 
 

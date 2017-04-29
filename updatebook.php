@@ -1,12 +1,12 @@
 <?php
-session_start();
-ob_start();
-if(empty($_SESSION["user"])){
-    header("location: index.php");
-}
-if($_SESSION['user_type']=='student'){
-    header("location: index.php");
-}
+    session_start();
+    ob_start();
+    if(empty($_SESSION["user"])){
+        header("location: index.php");
+    }
+    if($_SESSION['user_type']=='student'){
+        header("location: index.php");
+    }
 ?>
 
 <!doctype html>
@@ -26,41 +26,52 @@ if($_SESSION['user_type']=='student'){
     <?php include_once ('includes/sidebar.php'); ?>
 
     <div class="main-container">
-        <h1>Update BOOK Information</h1>
+        <h1>Update BOOK</h1>
+
         <div class="form login-form">
+            <?php
+            if ( isset($_GET['success']) && $_GET['success'] == 1 ){
+                echo '<div class="loginerror" id="dummy">
+                         <p class="errortxt">Successfully Updated</p>
+                      </div>';
+            }
+            else if ( isset($_GET['failed']) && $_GET['failed'] == 1){
+                echo '<div class="loginerror" id="dummy">
+                         <p class="errortxt">Error to Update</p>
+                      </div>';
+            }
+            ?>
             <form class="login-form" method="post" action="controller/book_controller.php">
-                <label for="bookid" text-align="left">Insert Book ID</label>
-                <input type="text" placeholder="Insert Book ID" name="updatebook" onchange="updateBook(this.value())"/>
-                <div id="updateinfo"></div>
+                <label for="username" text-align="left">Book ID</label>
+                <input type="text" placeholder="Insert Username" id="username" name="bookid" onchange="updateBook(this.value)"/>
+                <div id="userinfo"></div>
             </form>
         </div>
     </div>
 
 
-    <script>
-        function updateBook(str) {
-            alert("hello");
-            if (str == "") {
-                document.getElementById("updateinfo").innerHTML = "";
-                return;
-            }
-            else {
-                if (window.XMLHttpRequest) {
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("updateinfo").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("GET","updateinfo.php?q="+str,true);
-                xmlhttp.send();
-            }
+<script>
+
+    function updateBook(str) {
+        if (str == "") {
+            document.getElementById("userinfo").innerHTML = "";
+            return;
         }
-
-    </script>
-
+        else {
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("userinfo").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET","updateinfo.php?q="+str,true);
+            xmlhttp.send();
+        }
+    }
+</script>
 </body>
 </html>
