@@ -127,6 +127,24 @@
         return $cnt;
     }
 
+    function getAllCurrentBorrow(){
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE status='pending' AND issue_date = CURDATE()");
+        $res=mysqli_fetch_array($result);
+        return $res['totaltoday'];
+    }
+
+    function getAllCurrentReturn(){
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totalall FROM lms_issue WHERE status='accepted' AND return_date = CURDATE()");
+        $res=mysqli_fetch_array($result);
+        return $res['totalall'];
+    }
+
+    function getAllCurrentExpectedReturn(){
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totalall FROM lms_issue WHERE status='pending' AND return_date = CURDATE()");
+        $res=mysqli_fetch_array($result);
+        return $res['totalall'];
+    }
+
 
 
 

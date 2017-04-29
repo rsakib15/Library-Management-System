@@ -51,15 +51,15 @@ include_once 'model/book_model.php';
             <ul>
                 <li>
                     <p><a href="">Borrowed Transaction</a></p>
-                    <span>7</span>
+                    <span><?php echo getAllCurrentBorrow();?></span>
                 </li>
                 <li>
                     <p><a href="">Returned Transaction</a></p>
-                    <span>7</span>
+                    <span><?php echo getAllCurrentReturn();?></span>
                 </li>
                 <li>
-                    <p><a href="">Violation</a></p>
-                    <span>7</span>
+                    <p><a href="">Expected Return</a></p>
+                    <span><?php echo getAllCurrentExpectedReturn();?></span>
                 </li>
             </ul>
         </div>
