@@ -27,16 +27,25 @@
         }
 
     function add_issue($username,$bookid){
+        date_default_timezone_set('Asia/Dhaka');
         $u=getUserid($username);
         decresebook($bookid);
 
         $t=time();
         $t=date("Y-m-d", $t);
         $timestamp = time()+86400*7;
+
         $timestamp=date('Y-m-d',$timestamp);
 
         mysqli_query(getConnectionName(),"INSERT INTO lms_issue (book_id,user_id,issue_date, return_date,status)  VALUES ('".$bookid."', '".$u."','".$t."', '".$timestamp."','pending')");
         return true;
+    }
+
+    function getExpectedReturnDate($transaction){
+        $result=mysqli_query(getConnectionName(),"SELECT return_date FROM lms_issue where issue_id = '" . $transaction . "'");
+        if($res=mysqli_fetch_array($result)){
+            return $res['return_date'];
+        }
     }
 
     function return_issue($transaction){
@@ -46,8 +55,35 @@
             increasebook($bid);
             mysqli_query(getConnectionName(),"UPDATE lms_issue SET status = 'accepted' WHERE issue_id = '" . $transaction . "'");
         }
+
+        $d=calculateFine($transaction);
+        $u=getUserid($_SESSION['user']);
+
+        mysqli_query(getConnectionName(),"INSERT INTO lms_financial (issue_id,user_id,issue_returndate,fine) VALUES ('".$transaction."', '". $u ."' , '" . date("Y-m-d", time()) . "', '". $d ."')");
         return true;
     }
+
+    function calculateFine($transaction){
+        $d=getExpectedReturnDate($transaction);
+        $d=strtotime($d);
+        $d=time()-$d;
+        $d=floor($d/86400);
+        $d= intval($d*15);
+        if($d<=0)
+            $d=0;
+
+        return $d;
+    }
+
+    function getFine($transaction){
+        $u=getUserid($_SESSION['user']);
+
+        $result=mysqli_query(getConnectionName(),"SELECT fine FROM lms_financial where issue_id = '" . $transaction . "'");
+        $res=mysqli_fetch_array($result);
+        return $res['fine'];
+    }
+
+
 
     function getTotalBooks(){
         $result=mysqli_query(getConnectionName(),"SELECT * FROM lms_books");
@@ -81,7 +117,7 @@
     function getCurrentBorrow($user){
         $u=getUserid($user);
 
-        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE user_id='". $u . "' AND status='pending' AND issue_date = CURDATE()");
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE user_id='". $u . "'  AND issue_date = CURDATE()");
         $res=mysqli_fetch_array($result);
         return $res['totaltoday'];
     }
@@ -128,7 +164,7 @@
     }
 
     function getAllCurrentBorrow(){
-        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE status='pending' AND issue_date = CURDATE()");
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE  issue_date = CURDATE()");
         $res=mysqli_fetch_array($result);
         return $res['totaltoday'];
     }
@@ -143,6 +179,29 @@
         $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totalall FROM lms_issue WHERE status='pending' AND return_date = CURDATE()");
         $res=mysqli_fetch_array($result);
         return $res['totalall'];
+    }
+
+    function getAllTotalBorrow(){
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totaltoday FROM lms_issue WHERE status='pending'");
+        $res=mysqli_fetch_array($result);
+        return $res['totaltoday'];
+
+    }
+    function getAllTotalReturn(){
+        $result=mysqli_query(getConnectionName(),"SELECT COUNT(*) as totalall FROM lms_issue WHERE status='accepted'");
+        $res=mysqli_fetch_array($result);
+        return $res['totalall'];
+    }
+
+    function getAllTotalViolation(){
+        $result=mysqli_query(getConnectionName(),"SELECT *  FROM lms_issue WHERE  status='pending'");
+        $cnt=0;
+        while($res=mysqli_fetch_array($result)){
+            if($res['return_date']>time()){
+                $cnt++;
+            }
+        }
+        return $cnt;
     }
 
 

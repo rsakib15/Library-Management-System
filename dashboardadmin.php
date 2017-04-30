@@ -68,15 +68,15 @@ include_once 'model/book_model.php';
             <ul>
                 <li>
                     <p><a href="">Borrowed Transaction</a></p>
-                    <span>7</span>
+                    <span><?php echo getAllTotalBorrow();?></span>
                 </li>
                 <li>
                     <p><a href="">Returned Transaction</a></p>
-                    <span>7</span>
+                    <span><?php echo getAllTotalReturn();?></span>
                 </li>
                 <li>
                     <p><a href="">Violation</a></p>
-                    <span>7</span>
+                    <span><?php echo getAllTotalViolation();?></span>
                 </li>
             </ul>
         </div>

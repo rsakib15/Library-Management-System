@@ -1,5 +1,6 @@
 <?php
     include_once 'model/database.php';
+    include_once 'model/book_model.php';
     $q = intval($_GET['q']);
 
     $sql="SELECT lms_issue.issue_id,lms_issue.book_id,lms_issue.user_id,lms_issue.issue_date,lms_issue.return_date,lms_issue.status,lms_books.book_name,lms_books.book_isbn,lms_books.book_edition,lms_books.book_author,lms_user.user_name,lms_user.user_fname,lms_user.user_lname,lms_user.user_email FROM lms_issue,lms_books,lms_user WHERE lms_issue.book_id=lms_books.book_id AND lms_issue.user_id=lms_user.user_id AND lms_issue.issue_id = '" . $q . "'";
@@ -24,15 +25,8 @@
 
         echo '<br>';
 
-        $fine = ($row['return_date']-$row['issue_date'])/86400;
 
-        if($fine>7){
-            $fine= $fine*15;
-        }
-        else{
-            $fine= 0;
-        }
-        $fine= round($fine);
+        $fine= calculateFine($q);
 
         echo '<br>';
 
