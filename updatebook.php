@@ -13,12 +13,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -42,8 +38,8 @@
             }
             ?>
             <form class="login-form" method="post" action="controller/book_controller.php">
-                <label for="username" text-align="left">Book ID</label>
-                <input type="text" placeholder="Insert Username" id="username" name="bookid" onchange="updateBook(this.value)"/>
+                <label for="username" text-align="left">Insert Book ID</label>
+                <input type="text" id="username" name="bookid" onchange="updateBook(this.value)"/>
                 <div id="userinfo"></div>
             </form>
         </div>

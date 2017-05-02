@@ -13,20 +13,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <?php include_once ('includes/header.php'); ?>
     <?php include_once ('includes/sidebar.php'); ?>
     <div class="main-container">
+        <h1>Search Book</h1>
         <div class="search-area">
+
             <form action="" method="get">
-                <input type="text" placeholder="name" name="bookname" class="searchbox"/>
+                <input type="text" name="bookname" class="searchbox"/>
                 <button name="submit" class="searchbutton" value="search">Search</button>
             </form>
         </div>

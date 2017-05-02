@@ -11,7 +11,10 @@
 
             if(login($username,$pass)){
                 $_SESSION['loginerror'] = 0;
-                header('Location: ../dashboard.php');
+                if($_SESSION['user_type']=='admin')
+                    header('Location: ../dashboardadmin.php');
+                else
+                    header('Location: ../dashboard.php');
             }
             else {
                 $_SESSION['loginerror'] = 1;

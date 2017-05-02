@@ -13,12 +13,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Add New Book</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -26,6 +22,7 @@
     <?php include_once ('includes/sidebar.php'); ?>
 
     <div class="main-container">
+        <h1>Add New Book</h1>
         <div class="form login-form">
             <div id="login-form">
                 <?php
@@ -41,17 +38,22 @@
                 }
                 ?>
                 <form class="login-form "  method="post" action="controller/book_controller.php">
-                    <input type="text" placeholder="Book Name" name="bookname"/>
-                    <input type="text" placeholder="Book ISBN" name="bookisbn"/>
-                    <input type="text" placeholder="Book Edition" name="bookedition"/>
-                    <input type="text" placeholder="Book Author" name="bookauthor"/>
-                    <input type="text" placeholder="Total Copy" name="booktotal"/>
-                    <input type="text" placeholder="Shelf No." name="bookshelf"/>
+                    <p>Book Name</p>
+                    <input type="text" name="bookname"/>
+                    <p>Book ISBN</p>
+                    <input type="text" name="bookisbn"/>
+                    <p>Book Edition</p>
+                    <input type="text" name="bookedition"/>
+                    <p>Book Author</p>
+                    <input type="text" name="bookauthor"/>
+                    <p>Total Copy</p>
+                    <input type="text" name="booktotal"/>
+                    <p>Shelf NO.</p>
+                    <input type="text" name="bookshelf"/>
                     <button name="submit" value="addbook">ADD NEW BOOK</button>
                 </form>
             </div>
         </div>
     </div>
-
 </body>
 </html>

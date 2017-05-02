@@ -9,7 +9,8 @@
         echo '<p>Name : ' . $row['user_fname']. " " . $row['user_lname'] . '</p>';
         echo '<p>Email : ' . $row['user_email']. '</p>';
         echo '<p>Phone : ' . $row['user_phone']. '</p>';
-        echo '<input type="text" placeholder="Insert Book ID" name="bookid" onchange="showBook(this.value)"/>
+        echo '<p>Insert Book ID</p>';
+        echo '<input type="text" name="bookid" onchange="showBook(this.value)"/>
             <div id="bookinfo"></div>';
     }
     else{

@@ -2,7 +2,10 @@
     session_start();
     ob_start();
     if(!empty($_SESSION['user'])){
-        header('location: dashboard.php');
+        if($_SESSION['user_type']=='admin')
+            header('location: dashboardadmin.php');
+        else
+            header('location: dashboard.php');
     }
 ?>
 
@@ -11,12 +14,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Library Management System</title>
-
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="css/style.css">
-
+    <noscript>
+        <META HTTP-EQUIV="Refresh" CONTENT="0;URL=nojs.php">
+    </noscript>
 </head>
 
 <body>
@@ -39,8 +40,8 @@
         ?>
         <div id="login-form">
             <form class="login-form"  method="post" action="controller/login.php">
-                <input type="text" placeholder="name" name="user"/>
-                <input type="password" placeholder="password" name="password"/>
+                <input type="text" name="user"/>
+                <input type="password"  name="password"/>
                 <button name="submit" value="login">SIGN IN</button>
                 <p class="message">Already registered? <a href="#" onclick="signup()">Sign Up</a></p>
             </form>
